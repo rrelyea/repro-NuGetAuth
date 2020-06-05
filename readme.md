@@ -22,6 +22,9 @@ Clear NuGet's http cache and global package folder (customized to be in .package
 
 `dotnet nuget locals -c all`
 
-If using AACP (azure artifacts credential provider), make sure to remove the sessionTokenCache, if you are trying to test from scratch:
+If using [AACP](https://github.com/Microsoft/artifacts-credprovider) (azure artifacts credential provider)
+- make sure to remove the sessionTokenCache, if you are trying to test from scratch:
 
 `del %LocalAppData%\MicrosoftCredentialProvider\SessionTokenCache.dat`
+
+- $env:NUGET_CREDENTIALPROVIDER_SESSIONTOKENCACHE_ENABLED = false          -- will prompt for auth every time
