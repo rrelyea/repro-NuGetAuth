@@ -1,0 +1,8 @@
+C:\temp\auth\src\rrelyea.classlib2\bin\Debug\net5.0\rrelyea.classlib2.deps.json
+C:\temp\auth\src\rrelyea.classlib2\bin\Debug\net5.0\rrelyea.classlib2.dll
+C:\temp\auth\src\rrelyea.classlib2\bin\Debug\net5.0\rrelyea.classlib2.pdb
+C:\temp\auth\src\rrelyea.classlib2\obj\Debug\net5.0\rrelyea.classlib2.AssemblyInfoInputs.cache
+C:\temp\auth\src\rrelyea.classlib2\obj\Debug\net5.0\rrelyea.classlib2.AssemblyInfo.cs
+C:\temp\auth\src\rrelyea.classlib2\obj\Debug\net5.0\rrelyea.classlib2.csproj.CoreCompileInputs.cache
+C:\temp\auth\src\rrelyea.classlib2\obj\Debug\net5.0\rrelyea.classlib2.dll
+C:\temp\auth\src\rrelyea.classlib2\obj\Debug\net5.0\rrelyea.classlib2.pdb

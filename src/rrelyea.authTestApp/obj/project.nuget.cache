@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rvz3XPYOUqloElgloYQqq0rztmYgdeLXHmKXR8dcCcyqHjfEh6xw44W5Sl1LGTfJ5y8zpk15QpjTR1M86PJfMQ==",
+  "success": true,
+  "projectFilePath": "C:\\temp\\auth\\src\\rrelyea.authTestApp\\rrelyea.authTestApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\temp\\auth\\src\\packages\\rrelyea.classlib1\\1.1.0\\rrelyea.classlib1.1.1.0.nupkg.sha512",
+    "C:\\temp\\auth\\src\\packages\\rrelyea.classlib2\\1.1.0\\rrelyea.classlib2.1.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
