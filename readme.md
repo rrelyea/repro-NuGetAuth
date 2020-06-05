@@ -14,11 +14,14 @@ There is a local nuget.config file pointing to a authenticated azure artifacts f
 ## Clean and try again
 To clean up and try your authenticated scenario again:
 
-Make sure the assets file is deleted, or restore won't run.
+Make sure the assets file is deleted, or restore won't need to run:
+
 `rd src\rrelyea.authTestApp\obj -r`
 
-Clear NuGet's http cache and global package folder (customized to be in .packages\ via nuget.config)
+Clear NuGet's http cache and global package folder (customized to be in .packages\ via nuget.config):
+
 `dotnet nuget locals -c all`
 
 If using AACP (azure artifacts credential provider), make sure to remove the sessionTokenCache, if you are trying to test from scratch:
+
 `del %LocalAppData%\MicrosoftCredentialProvider\SessionTokenCache.dat`
