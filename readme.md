@@ -1,30 +1,45 @@
-# repro-NuGetAuth
+# repro-NuGetAuth - demo steps
 
+cd \temp
+
+git clone https://github.com/rrelyea/repro-nugetAuth auth
+
+cd auth
+
+```
 Auth.sln has 3 projects.
 -rrelyea.authTestApp, which has a packagereference to:
 - rrelyea.classlib1, which has a project ref to:
 - rrelyea.classlib2
+```
 
-There is a local nuget.config file pointing to a authenticated azure artifacts feed.
+There is a local [nuget.config](nuget.config) file pointing to a authenticated azure artifacts feed, also customizes the global package folder to be in \Packages\
 
-## How to repro
-- In VS, open auth.sln, and build (which will do a restore).
-- In dev command prompt, run `msbuild /r auth.sln /p:NuGetInteractive=true`, which will restore and then build.
+show [failure image](FailureToRestoreDueToAuth.png)
 
-## Clean and try again
-To clean up and try your authenticated scenario again:
+run clear.cmd -- to delete assets file, packages from local machine
 
-Make sure the assets file is deleted, or restore won't need to run:
+launch 'devenv c:\temp\auth\auth.sln /server
 
-`rd src\rrelyea.authTestApp\obj -r`
+connect via client
 
-Clear NuGet's http cache and global package folder (customized to be in .packages\ via nuget.config):
+F12 on Class1 in Program.cs in rrelyea-authTest project
 
-`dotnet nuget locals -c all`
+Expand the top line in code, to show location of assembly (packages folder!)
 
-If using [AACP](https://github.com/Microsoft/artifacts-credprovider) (azure artifacts credential provider)
-- make sure to remove the sessionTokenCache, if you are trying to test from scratch:
+# Next Steps
 
-`del %LocalAppData%\MicrosoftCredentialProvider\SessionTokenCache.dat`
+- Merge latest NuGet (eta today)
 
-- $env:NUGET_CREDENTIALPROVIDER_SESSIONTOKENCACHE_ENABLED = false          -- will prompt for auth every time
+- dotnet.exe/nuget.exe/msbuild.exe running in VS Terminal or in middle of builds
+  - msbuild.exe /restore
+    - integrated windows auth doesn't work w/o interaction, unlike normal CLIs and AACP on a client. (expensive to solve)
+    - device flow prompts once per feed, where it should be able to use the same creds, in most cases, if same AAD Tenant. [artifacts-credprovider#195](https://github.com/microsoft/artifacts-credprovider/issues/195)
+  - nuget.exe
+    - NuGet.exe should detect execution on codespace, and send canPrompt to plugin as false. [nuget/home#9687](https://github.com/NuGet/Home/issues/9687) 
+  - dotnet.exe
+    - make install of AACP (dotnet core flavor) installable easily [client.engineering#360](https://github.com/NuGet/Client.Engineering/issues/360)
+  - all
+    - [nuget/home#9688](https://github.com/NuGet/Home/issues/9688) improve error experience with NUXXXX errors when auth fails, or auth fails and no cred provider is there, etc..
+
+- Test and design VS Auth flow when the codespace login account is different than the Azure Artifacts feed account.
