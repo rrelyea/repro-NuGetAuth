@@ -1,0 +1,3 @@
+﻿this is the license form text.txt ...
+
+embedded license!
